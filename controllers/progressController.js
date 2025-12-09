@@ -15,7 +15,7 @@ export const createProgress = async (req, res) => {
         const response = await ProgressModel.create({
             imageUrl,
             description,
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         });
 
         return res.status(200).json({
@@ -34,7 +34,7 @@ export const createProgress = async (req, res) => {
 export const listProgress = async (req, res) => {
     try {
         const response = await ProgressModel.find({
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         }).sort({ createdAt: -1 });
 
         return res.status(200).json({
@@ -64,7 +64,7 @@ export const detailProgress = async (req, res) => {
 
         const response = await ProgressModel.findOne({
             _id: id,
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         });
 
         if (!response) {
@@ -104,7 +104,7 @@ export const updateProgress = async (req, res) => {
         const response = await ProgressModel.findOneAndUpdate(
             {
                 _id: id,
-                createdBy: req.user?.user_id
+                userId: req.user?.user_id
             },
             { imageUrl, description },
             { new: true }
@@ -143,7 +143,7 @@ export const deleteProgress = async (req, res) => {
 
         const response = await ProgressModel.findOneAndDelete({
             _id: id,
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         });
 
         if (!response) {

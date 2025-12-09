@@ -15,7 +15,7 @@ export const createPost = async (req, res) => {
         const response = await PostModel.create({
             caption,
             imageUrl,
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         });
 
         return res.status(200).json({
@@ -34,7 +34,7 @@ export const createPost = async (req, res) => {
 export const listPost = async (req, res) => {
     try {
         const response = await PostModel.find({
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         }).sort({ createdAt: -1 });
 
         return res.status(200).json({
@@ -64,7 +64,7 @@ export const detailPost = async (req, res) => {
 
         const response = await PostModel.findOne({
             _id: id,
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         });
 
         if (!response) {
@@ -90,9 +90,7 @@ export const detailPost = async (req, res) => {
 export const updatePost = async (req, res) => {
     try {
         const id = req.params?.id;
-        const request = req.body;
-
-        const { caption, imageUrl } = request;
+        const { caption, imageUrl } = req.body;
 
         if (!id) {
             return res.status(400).json({
@@ -101,18 +99,26 @@ export const updatePost = async (req, res) => {
             });
         }
 
+        const updateData = {};
+        if (caption) updateData.caption = caption;
+        if (imageUrl) updateData.imageUrl = imageUrl;
+
+        if (Object.keys(updateData).length === 0) {
+            return res.status(400).json({
+                message: "Tidak ada data untuk diupdate",
+                data: null
+            });
+        }
+
         const response = await PostModel.findOneAndUpdate(
-            {
-                _id: id,
-                createdBy: req.user?.user_id
-            },
-            { caption, imageUrl },
+            { _id: id, userId: req.user?.user_id }, 
+            updateData,
             { new: true }
         );
 
         if (!response) {
-            return res.status(500).json({
-                message: "Postingan gagal diupdate",
+            return res.status(404).json({
+                message: "Postingan tidak ditemukan",
                 data: null
             });
         }
@@ -143,7 +149,7 @@ export const deletePost = async (req, res) => {
 
         const response = await PostModel.findOneAndDelete({
             _id: id,
-            createdBy: req.user?.user_id
+            userId: req.user?.user_id
         });
 
         if (!response) {

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const ProgressSchema = new mongoose.Schema({
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
         required: true
@@ -11,7 +11,7 @@ const ProgressSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    caption: {
+    description: {
         type: String,
         required: true,
         trim: true

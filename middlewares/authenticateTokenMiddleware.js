@@ -25,7 +25,7 @@ export const authenticateTokenMiddleware = (req, res, next) => {
             });
         }
 
-        req.user = decoded;
+        req.user = {user_id: decoded.user_id};
         next();
     });
 };
