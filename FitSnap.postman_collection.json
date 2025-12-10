@@ -1,0 +1,775 @@
+{
+	"info": {
+		"_postman_id": "be580912-d58b-4791-8ec6-66d918460bb5",
+		"name": "FitSnap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49014540",
+		"_collection_link": "https://cindypatriciak-3015394.postman.co/workspace/cindypatriciak's-Workspace~25386415-7deb-4f60-81a6-1d10bd1129a4/collection/49014540-be580912-d58b-4791-8ec6-66d918460bb5?action=share&source=collection_link&creator=49014540"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"CPK1234\",\r\n    \"email\" : \"cpk1234@gmail.com\",\r\n    \"password\" : \"cpk1234\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"cpk1234@gmail.com\",\r\n    \"password\" : \"cpk1234\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePost",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjhiM2Y0MTdjMDZhNzJjZDNkMjEyIiwidXNlcm5hbWUiOiJQaWdmbHkwMDAiLCJpYXQiOjE3NjUxODIyOTMsImV4cCI6MTc2NTE4MzE5M30.N_R2siugfTn9H7XMUT4uxpBoj3V-OghKQvEYkXyeaI0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caption\": \"Badminton\",\r\n    \"imageUrl\": \"https://badminton.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjU3NGIxYWMzZThjNTdjMDhmZTFhIiwidXNlcm5hbWUiOiJDUEsxMjM0IiwiaWF0IjoxNzY1MTgwMzE4LCJleHAiOjE3NjUxODEyMTh9.s2QAC32j7wMKuLv0Kq5h68t_VXwE3vAdORbQPSn2GR8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caption\": \"Pilates pertemuan 1\",\r\n    \"imageUrl\": \"https://pilates.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/post/693682c2722e573f67550e50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post",
+						"693682c2722e573f67550e50"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjU3NGIxYWMzZThjNTdjMDhmZTFhIiwidXNlcm5hbWUiOiJDUEsxMjM0IiwiaWF0IjoxNzY1MTgwMzE4LCJleHAiOjE3NjUxODEyMTh9.s2QAC32j7wMKuLv0Kq5h68t_VXwE3vAdORbQPSn2GR8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caption\": \"Pilates pertemuan 1\",\r\n    \"imageUrl\": \"https://pilates.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/post/693682c2722e573f67550e50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post",
+						"693682c2722e573f67550e50"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListPost",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjU3NGIxYWMzZThjNTdjMDhmZTFhIiwidXNlcm5hbWUiOiJDUEsxMjM0IiwiaWF0IjoxNzY1MTgwMzE4LCJleHAiOjE3NjUxODEyMTh9.s2QAC32j7wMKuLv0Kq5h68t_VXwE3vAdORbQPSn2GR8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caption\": \"Pilates pertemuan 1\",\r\n    \"imageUrl\": \"https://pilates.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DetailPost",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjg2NDQyMjgxYjdkYzg4MDI1MTE2IiwidXNlcm5hbWUiOiJNb25pY2ExMjM0IiwiaWF0IjoxNzY1MTgxMjY0LCJleHAiOjE3NjUxODIxNjR9.QCGJLgaM4Axv_V9vFqqJmxlzCGyFFo7FsXTokmYceSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caption\": \"Gym dayy\",\r\n    \"imageUrl\": \"https://gym.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/post/6936866f2281b7dc88025119",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post",
+						"6936866f2281b7dc88025119"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateProgress",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjg2NDQyMjgxYjdkYzg4MDI1MTE2IiwidXNlcm5hbWUiOiJNb25pY2ExMjM0IiwiaWF0IjoxNzY1MTgxMjY0LCJleHAiOjE3NjUxODIxNjR9.QCGJLgaM4Axv_V9vFqqJmxlzCGyFFo7FsXTokmYceSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageUrl\": \"https://gym.com/image.jpg\",\r\n    \"description\": \"Gym pertama seumur hidup\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/progress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"progress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListProgress",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjg2NDQyMjgxYjdkYzg4MDI1MTE2IiwidXNlcm5hbWUiOiJNb25pY2ExMjM0IiwiaWF0IjoxNzY1MTgxMjY0LCJleHAiOjE3NjUxODIxNjR9.QCGJLgaM4Axv_V9vFqqJmxlzCGyFFo7FsXTokmYceSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageUrl\": \"https://gym.com/image.jpg\",\r\n    \"description\": \"Gym pertama seumur hidup\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/progress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"progress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProgress",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjg2NDQyMjgxYjdkYzg4MDI1MTE2IiwidXNlcm5hbWUiOiJNb25pY2ExMjM0IiwiaWF0IjoxNzY1MTgxMjY0LCJleHAiOjE3NjUxODIxNjR9.QCGJLgaM4Axv_V9vFqqJmxlzCGyFFo7FsXTokmYceSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageUrl\": \"https://gym.com/image.jpg\",\r\n    \"description\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/progress/6936897b417c06a72cd3d20c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"progress",
+						"6936897b417c06a72cd3d20c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DetailProgress",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjg2NDQyMjgxYjdkYzg4MDI1MTE2IiwidXNlcm5hbWUiOiJNb25pY2ExMjM0IiwiaWF0IjoxNzY1MTgxMjY0LCJleHAiOjE3NjUxODIxNjR9.QCGJLgaM4Axv_V9vFqqJmxlzCGyFFo7FsXTokmYceSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageUrl\": \"https://gym.com/image.jpg\",\r\n    \"description\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/progress/6936897b417c06a72cd3d20c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"progress",
+						"6936897b417c06a72cd3d20c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProgress",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjg2NDQyMjgxYjdkYzg4MDI1MTE2IiwidXNlcm5hbWUiOiJNb25pY2ExMjM0IiwiaWF0IjoxNzY1MTgxMjY0LCJleHAiOjE3NjUxODIxNjR9.QCGJLgaM4Axv_V9vFqqJmxlzCGyFFo7FsXTokmYceSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageUrl\": \"https://gym.com/image.jpg\",\r\n    \"description\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/progress/6936897b417c06a72cd3d20c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"progress",
+						"6936897b417c06a72cd3d20c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateComment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjhiM2Y0MTdjMDZhNzJjZDNkMjEyIiwidXNlcm5hbWUiOiJQaWdmbHkwMDAiLCJpYXQiOjE3NjUxODIyOTMsImV4cCI6MTc2NTE4MzE5M30.N_R2siugfTn9H7XMUT4uxpBoj3V-OghKQvEYkXyeaI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\": \"69368bef417c06a72cd3d215\",\r\n    \"comment\": \"Keren hahaha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateComment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjhiM2Y0MTdjMDZhNzJjZDNkMjEyIiwidXNlcm5hbWUiOiJQaWdmbHkwMDAiLCJpYXQiOjE3NjUxODIyOTMsImV4cCI6MTc2NTE4MzE5M30.N_R2siugfTn9H7XMUT4uxpBoj3V-OghKQvEYkXyeaI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\": \"69368bef417c06a72cd3d215\",\r\n    \"comment\": \"keren banget hahaha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comment/69368c79417c06a72cd3d219",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comment",
+						"69368c79417c06a72cd3d219"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DetailComment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjhiM2Y0MTdjMDZhNzJjZDNkMjEyIiwidXNlcm5hbWUiOiJQaWdmbHkwMDAiLCJpYXQiOjE3NjUxODIyOTMsImV4cCI6MTc2NTE4MzE5M30.N_R2siugfTn9H7XMUT4uxpBoj3V-OghKQvEYkXyeaI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\": \"69368bef417c06a72cd3d215\",\r\n    \"comment\": \"keren banget hahaha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comment/69368c79417c06a72cd3d219",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comment",
+						"69368c79417c06a72cd3d219"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteComment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjhiM2Y0MTdjMDZhNzJjZDNkMjEyIiwidXNlcm5hbWUiOiJQaWdmbHkwMDAiLCJpYXQiOjE3NjUxODIyOTMsImV4cCI6MTc2NTE4MzE5M30.N_R2siugfTn9H7XMUT4uxpBoj3V-OghKQvEYkXyeaI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\": \"69368bef417c06a72cd3d215\",\r\n    \"comment\": \"keren banget hahaha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/comment/69368c79417c06a72cd3d219",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comment",
+						"69368c79417c06a72cd3d219"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListComment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjkzNjhiM2Y0MTdjMDZhNzJjZDNkMjEyIiwidXNlcm5hbWUiOiJQaWdmbHkwMDAiLCJpYXQiOjE3NjUzNDIzOTgsImV4cCI6MTc2NTM0MzI5OH0.v7SYwuwGSwiIOIylg5EnnuV7w6Bs1AC4xUPbPMgYlKA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "postId",
+						"value": "69368bef417c06a72cd3d215",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/comment?postId=69368bef417c06a72cd3d215",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comment"
+					],
+					"query": [
+						{
+							"key": "postId",
+							"value": "69368bef417c06a72cd3d215"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
