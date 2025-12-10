@@ -43,7 +43,7 @@ export const createComment = async (req, res) => {
 
 export const listComment = async (req, res) => {
     try {
-        const { postId } = req.query;
+        const { postId } = req.query; 
 
         if (!postId) {
             return res.status(400).json({

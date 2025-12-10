@@ -59,7 +59,7 @@ export const signUp = async (req, res) => {
 
         const hashed = await hashedPassword(password);
 
-        const newUser = await UserModel.create({
+        const newUser = await UserModel.create({ 
             username,
             email,
             password: hashed
