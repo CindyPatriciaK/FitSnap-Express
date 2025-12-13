@@ -4,7 +4,7 @@ import * as postController from "../controllers/postController.js"
 import * as progressController from "../controllers/progressController.js";
 import * as commentController from "../controllers/commentController.js";
 import { authenticateTokenMiddleware } from "../middlewares/authenticateTokenMiddleware.js";
-
+import upload from "../middlewares/upload.js";
 
 const api = express.Router()
 
@@ -22,6 +22,9 @@ api.get("/progress", authenticateTokenMiddleware, progressController.listProgres
 api.get("/progress/:id", authenticateTokenMiddleware, progressController.detailProgress);
 api.put("/progress/:id", authenticateTokenMiddleware, progressController.updateProgress);
 api.delete("/progress/:id", authenticateTokenMiddleware, progressController.deleteProgress);
+api.post("/progress", authenticateTokenMiddleware, upload.single("image"),progressController.createProgress);
+api.put("/progress/:id", authenticateTokenMiddleware, upload.single("image"), progressController.updateProgress);
+
 
 api.post("/comment", authenticateTokenMiddleware, commentController.createComment);
 api.get("/comment", authenticateTokenMiddleware, commentController.listComment);
