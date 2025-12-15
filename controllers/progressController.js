@@ -3,7 +3,7 @@ import ProgressModel from "../models/ProgressModel.js";
 export const createProgress = async (req, res) => {
     try {
         console.log(req.body);
-        console.log(req.file);
+        
         const { description } = req.body
 
         if (!req.file || !description) {
@@ -36,9 +36,7 @@ export const createProgress = async (req, res) => {
 
 export const listProgress = async (req, res) => {
     try {
-        const response = await ProgressModel.find({
-            userId: req.user.user_id
-        }).sort({ createdAt: -1 });
+        const response = await ProgressModel.find({}).populate('userId').sort({ createdAt: -1 });
 
         return res.status(200).json({
             message: "List semua progress",
@@ -105,7 +103,7 @@ export const updateProgress = async (req, res) => {
         const updateData = { description }
 
         if(req.file){
-            updateData.imageUrl = `uploads/${req.file.filename}`
+            updateData.imageUrl = `upload/${req.file.filename}`
         }
 
         const response = await ProgressModel.findOneAndUpdate(

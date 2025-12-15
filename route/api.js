@@ -17,7 +17,7 @@ api.get("/post/:id", authenticateTokenMiddleware, postController.detailPost);
 api.put("/post/:id", authenticateTokenMiddleware, postController.updatePost);
 api.delete("/post/:id", authenticateTokenMiddleware, postController.deletePost);
 
-api.post("/progress", authenticateTokenMiddleware, progressController.createProgress);
+api.post("/progress", authenticateTokenMiddleware, upload.single('image'), progressController.createProgress);
 api.get("/progress", authenticateTokenMiddleware, progressController.listProgress);
 api.get("/progress/:id", authenticateTokenMiddleware, progressController.detailProgress);
 api.put("/progress/:id", authenticateTokenMiddleware, progressController.updateProgress);

@@ -3,7 +3,7 @@ import path from "path";
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "uploads"); // ⬅️ HARUS ADA FOLDER INI
+        cb(null, "upload"); // ⬅️ HARUS ADA FOLDER INI
     },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname);
