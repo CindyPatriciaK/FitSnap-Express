@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express()
-app.use("/upload", express.static("upload"));
+app.use("/upload", express.static("uploads"));
 app.use(cors())
 app.use(express.json())
 

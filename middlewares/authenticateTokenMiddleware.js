@@ -1,31 +1,21 @@
 import jwt from "jsonwebtoken";
 
 export const authenticateTokenMiddleware = (req, res, next) => {
-    const authHeader = req.headers.authorization;
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1]; // ambil token setelah 'Bearer'
 
-    if (!authHeader) {
-        return res.status(401).send({
-            error: "No token provided"
-        });
+  if (!token) {
+    return res.status(401).json({ message: "Token tidak ditemukan" });
+  }
+
+  jwt.verify(token, process.env.APP_JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: "Token tidak valid" });
     }
 
-    const token = authHeader.split(" ")[1];
+    console.log("✅ TOKEN PAYLOAD:", user); // ← ini bantu lihat isi token
 
-    if (!token) {
-        return res.status(401).send({
-            error: "No token provided"
-        });
-    }
-
-    jwt.verify(token, process.env.APP_JWT_SECRET, (err, decoded) => {
-        if (err) {
-            return res.status(401).send({
-                error: "Invalid token",
-                details: err.message,
-            });
-        }
-
-        req.user = {user_id: decoded.user_id};
-        next();
-    });
+    req.user = user; // inject payload ke req.user
+    next();
+  });
 };
