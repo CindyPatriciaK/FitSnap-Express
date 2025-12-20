@@ -49,4 +49,10 @@ api.get("/comment/:id", authenticateTokenMiddleware, commentController.detailCom
 api.put("/comment/:id", authenticateTokenMiddleware, commentController.updateComment);
 api.delete("/comment/:id", authenticateTokenMiddleware, commentController.deleteComment);
 
+// Profile routes
+
+api.get("/profile", authenticateTokenMiddleware, userController.getProfile);
+api.put("/profile", authenticateTokenMiddleware,upload.single("image"), userController.updateProfile);
+api.delete("/profile", authenticateTokenMiddleware, userController.deleteAccount);
+
 export default api;

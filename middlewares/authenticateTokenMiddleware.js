@@ -11,6 +11,8 @@ export const authenticateTokenMiddleware = (req, res, next) => {
   jwt.verify(token, process.env.APP_JWT_SECRET, (err, user) => {
     if (err) {
       return res.status(403).json({ message: "Token tidak valid" });
+      req.user = user; // ⬅️ INI WAJIB
+      next();
     }
 
     console.log("✅ TOKEN PAYLOAD:", user); // ← ini bantu lihat isi token
