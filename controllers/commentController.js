@@ -27,9 +27,12 @@ export const createComment = async (req, res) => {
             comment
         });
 
+        const populateComment = await CommentModel.findById(newComment._id)
+            .populate("userId", "username");
+
         return res.status(200).json({
             message: "Komentar berhasil ditambahkan",
-            data: newComment
+            data:populateComment
         });
 
     } catch (error) {
@@ -53,6 +56,7 @@ export const listComment = async (req, res) => {
         }
 
         const comments = await CommentModel.find({ postId })
+            .populate("userId", "username")
             .sort({ createdAt: -1 });
 
         return res.status(200).json({

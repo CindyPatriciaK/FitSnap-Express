@@ -13,11 +13,25 @@ api.post("/signin", userController.signIn);
 api.post("/signup", userController.signUp);
 
 // POST ROUTES
-api.post("/post", authenticateTokenMiddleware, postController.createPost);
+api.post(
+  "/post",
+  upload.single("image"),
+  authenticateTokenMiddleware,   // ✅ tambahkan ini
+  postController.createPost
+);
+
 api.get("/post", authenticateTokenMiddleware, postController.listPost);
 api.get("/post/:id", authenticateTokenMiddleware, postController.detailPost);
-api.put("/post/:id", authenticateTokenMiddleware, postController.updatePost);
+
+api.put(
+  "/post/:id",
+  authenticateTokenMiddleware,
+  upload.single("image"),   // ✅ tambahkan ini juga
+  postController.updatePost
+);
+
 api.delete("/post/:id", authenticateTokenMiddleware, postController.deletePost);
+api.post("/post/:id/like", authenticateTokenMiddleware, postController.toggleLike);
 
 // PROGRESS ROUTES
 api.post(
@@ -48,6 +62,7 @@ api.get("/comment", authenticateTokenMiddleware, commentController.listComment);
 api.get("/comment/:id", authenticateTokenMiddleware, commentController.detailComment);
 api.put("/comment/:id", authenticateTokenMiddleware, commentController.updateComment);
 api.delete("/comment/:id", authenticateTokenMiddleware, commentController.deleteComment);
+
 
 // Profile routes
 

@@ -9,6 +9,7 @@ dotenv.config();
 
 const app = express()
 app.use("/upload", express.static("uploads"));
+app.use("/uploads", express.static("uploads"));  // ✅ untuk postModel
 app.use(cors())
 app.use(express.json())
 
